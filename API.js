@@ -1,5 +1,5 @@
 async function load(logID) {
-    const response = await fetch("http://localhost:8080/chatlog/v1/get/" + logID + "/")
+    const response = await fetch("http://localhost:8082/chatlog/v1/get/" + logID + "/")
 
     if(response.ok) {
         const json = await response.json();
@@ -44,7 +44,7 @@ if(logID != null) {
 
     setState(
         `<h1>Invalid Request</h1>
-         <h3>Parameter logID is missing</h3>`
+         <h3>URL-Parameter logID is missing</h3>`
     )
 }
 
