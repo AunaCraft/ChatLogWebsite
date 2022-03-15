@@ -18,9 +18,9 @@ async function load(logID) {
 
             var row = `<tr>
 							<td id="head"><img src="https://mc-heads.net/avatar/${uuid}/35.png"></td>
-							<td id="time">${dateObject.toLocaleString("de-DE")}</td>
 							<td id="name">${escapeHtml(displayName)}</td>
 							<td id="message">${escapeHtml(message)}</td>
+							<td id="time">${dateObject.toLocaleString("de-DE")}</td>
 					  </tr>`
             table.innerHTML += row
 
@@ -44,6 +44,7 @@ function setState(code) {
 
 const url = new URL(document.location)
 const logID = url.searchParams.get("logID")
+
 if(logID != null) {
     load(logID)
 }else {
