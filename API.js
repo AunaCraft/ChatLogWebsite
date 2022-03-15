@@ -1,5 +1,5 @@
 async function load(logID) {
-    const response = await fetch("http://localhost:8082/chatlog/v1/get/" + logID + "/")
+    const response = await fetch("http://45.142.114.107:8082/chatlog/v1/get/" + logID + "/")
 
     if(response.ok) {
         const json = await response.json();
@@ -19,8 +19,8 @@ async function load(logID) {
             var row = `<tr>
 							<td id="head"><img src="https://mc-heads.net/avatar/${uuid}/35.png"></td>
 							<td id="time">${dateObject.toLocaleString("de-DE")}</td>
-							<td id="name">${displayName}</td>
-							<td id="message">${message}</td>
+							<td id="name">${escapeHtml(displayName)}</td>
+							<td id="message">${escapeHtml(message)}</td>
 					  </tr>`
             table.innerHTML += row
 
@@ -30,6 +30,12 @@ async function load(logID) {
          <h3>${response.status}</h3>`
         )
     }
+}
+
+function escapeHtml(raw) {
+    return raw.replace(/[&<>"']/g, function onReplace(match) {
+        return '&#' + match.charCodeAt(0) + ';';
+    });
 }
 
 function setState(code) {
