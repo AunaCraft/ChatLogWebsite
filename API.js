@@ -5,8 +5,7 @@ async function load(logID) {
         const json = await response.json();
         const messages = json["messages"]
 
-
-        var table = document.getElementById('table')
+        const table = document.getElementById('table');
 
         for (let i = 0; i < messages.length; i++) {
             const messageObject = messages[i]
@@ -18,7 +17,7 @@ async function load(logID) {
 
             var row = `<tr>
 							<td id="head"><img src="https://mc-heads.net/avatar/${uuid}/35.png"></td>
-							<td id="name">${escapeHtml(displayName)}</td>
+							<td id="name">${escapeHtml(displayName) + ":"}</td>
 							<td id="message">${escapeHtml(message)}</td>
 							<td id="time">${dateObject.toLocaleString("de-DE")}</td>
 					  </tr>`

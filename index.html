@@ -7,18 +7,31 @@
 </head>
 <body>
 
-<div id="state">
+<div id="main">
+    <div id="header">
+        <center>
+            <img src="assets/server-icon.png">
+            <a class="title">ChatLog</a>
+        </center>
+    </div>
+    <div id="state">
+    </div>
+    <table id="chat" cellspacing="0" cellpadding="4">
+        <tr>
+            <th><span>Head</span></th>
+            <th><span>Name</span></th>
+            <th><span>Time</span></th>
+            <th><span>Message</span></th>
+        </tr>
+        <tbody id="table"></tbody>
+    </table>
+    <div id="footer">
+        <hr color="#4f4f4f">
+        <a id="footerLink" href="https://github.com/AunaCraft/ChatLog" target="_blank" rel="noopener noreferrer">
+            Host yourself / Download
+        </a>
+    </div>
 </div>
-
-<table id="chat">
-    <tr>
-        <th><span>Head</span></th>
-        <th><span>Name</span></th>
-        <th><span>Time</span></th>
-        <th><span>Message</span></th>
-    </tr>
-    <tbody id="table"></tbody>
-</table>
 
 <script src="API.js"></script>
 </body>
