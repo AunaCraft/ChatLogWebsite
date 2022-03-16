@@ -98,6 +98,10 @@ body {
     font-family: "Segoe UI";
 }
 
+#copyrightDisclaimer{
+    float: right;
+    width: 205px;
+}
 
 tr:nth-child(even) {
     background-image: linear-gradient(90deg, #003193 0%, #0060ce 6%, #0c0064 89%);
