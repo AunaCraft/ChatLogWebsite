@@ -1,11 +1,17 @@
+const apiAddress = "dev.aunacraft.de:8082"
+
 async function load(logID) {
-    const response = await fetch("http://45.142.114.107:8082/chatlog/v1/get/" + logID + "/")
+    const response = await fetch("http://" + apiAddress + "/chatlog/v1/get/" + logID + "/")
+
+    console.log("1 - " + logID)
 
     if(response.ok) {
         const json = await response.json();
         const messages = json["messages"]
 
         const table = document.getElementById('table');
+
+        console.log(2)
 
         for (let i = 0; i < messages.length; i++) {
             const messageObject = messages[i]
@@ -25,11 +31,28 @@ async function load(logID) {
 
         }
     }else {
-        setState(`<h1>Error</h1>
-         <h3>${response.status}</h3>`
+        var errorMessage = "Response-Code: " + response.status;
+        if(response.status == 404){
+            errorMessage = "Requested Log does not exist"
+        }
+        setState(`<h1 style="color: #dd0027">Error</h1>
+         <h3>${errorMessage}</h3>`
         )
     }
 }
+
+function resetTable(){
+    const table = document.getElementById('table');
+    table.innerHTML = ""
+    setState("")
+}
+
+document.getElementById("searchButton").addEventListener("click", function () {
+    const logID = document.querySelector("input").value;
+    console.log(logID)
+    resetTable()
+    load(logID)
+})
 
 function escapeHtml(raw) {
     return raw.replace(/[&<>"']/g, function onReplace(match) {
@@ -47,7 +70,6 @@ const logID = url.searchParams.get("logID")
 if(logID != null) {
     load(logID)
 }else {
-
     setState(
         `<h1>Invalid Request</h1>
          <h3>URL-Parameter logID is missing</h3>`

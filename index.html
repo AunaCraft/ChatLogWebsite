@@ -8,14 +8,21 @@
 <body>
 
 <div id="main">
+    <div id="background"></div>
+    <div id="foreground"></div>
     <div id="header">
         <center>
-            <img src="assets/server-icon.png">
-            <a class="title">ChatLog</a>
+            <img id="logo" src="assets/server-icon.png">
+            <p>
+            <input type="text" id="search" placeholder="Enter Log ID...">
+                <input type="submit" id="searchButton" name="" value="Request Log">
         </center>
+        <hr color="#4f4f4f">
     </div>
-    <div id="state">
-    </div>
+    <center>
+        <div id="state">
+        </div>
+    </center>
     <table id="chat" cellspacing="0" cellpadding="4">
         <tr>
             <th><span>Head</span></th>
