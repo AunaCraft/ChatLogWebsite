@@ -1,10 +1,19 @@
 const apiAddress = "dev.aunacraft.de:8082"
 
-var currentlyLoadedID = "Nothing is loaded!";
+let currentlyLoadedID = "Nothing is loaded!";
 
 async function load(logID) {
 
     document.title = "Loading..."
+
+    if(logID == null || logID === ""){
+        document.title = "AunaCraft | ChatLog [Error]"
+
+        setState(`<h1 style="color: #dd0027">Error</h1>
+         <h3 style="padding-bottom: 400px">LogID Field is empty</h3>`
+        )
+        return
+    }
 
     const response = await fetch("http://" + apiAddress + "/chatlog/v1/get/" + logID + "/")
 
